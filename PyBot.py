@@ -101,7 +101,7 @@ def process_mentions(client):
         for mention in mentions.data:
             if mention.id in used:
                 break
-            used.insert(mention.id)
+            used.add(mention.id)
             print(f"Processing mention ID: {mention.id}")
             
             # Get username from the mapping instead of making another API call
