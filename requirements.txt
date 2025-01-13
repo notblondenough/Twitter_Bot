@@ -2,3 +2,4 @@ tweepy
 bs4
 tqdm
 cloudinary
+python-dotenv
