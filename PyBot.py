@@ -15,6 +15,7 @@ load_dotenv()
 
 sys.stdout.reconfigure(encoding='utf-8')
 
+used=set()
 # Configure Cloudinary
 cloudinary.config(
     cloud_name=os.getenv('CLOUD_NAME'),
@@ -98,6 +99,9 @@ def process_mentions(client):
         users = {user.id: user.username for user in mentions.includes['users']} if 'users' in mentions.includes else {}
 
         for mention in mentions.data:
+            if mention.id in used:
+                break
+            used.insert(mention.id)
             print(f"Processing mention ID: {mention.id}")
             
             # Get username from the mapping instead of making another API call
